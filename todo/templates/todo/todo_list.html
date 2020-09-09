@@ -9,7 +9,7 @@
 <body>
     <h1>Things I need to do:</h1>
     <table>
-        {% for item in items %}
+        {% for item in list %}
             <tr>
                 {% if item.done %}
                     <td><strike>{{ item.name }}</strike></td>
