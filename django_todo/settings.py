@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import dj_database_url
 
-development = os.environ.get('DEVELOPMENT', False)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,15 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'n2=lc(#b!onnl*qy358-ayvo0t&ec!36yp$z3tl^dbm*!1-^ub')
+SECRET_KEY = 'n2=lc(#b!onnl*qy358-ayvo0t&ec!36yp$z3tl^dbm*!1-^ub'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = True
 
-if development:
-    ALLOWED_HOSTS = ['localhost']
-else:
-    ALLOWED_HOSTS = ['ckz8780-django-stan-todo-app.herokuapp.com']
+ALLOWED_HOSTS = ['ckz8780-django-stan-todo-app.herokuapp.com']
 
 
 # Application definition
@@ -84,21 +80,9 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 #     }
 # }
 
-#DATABASES = {
- #   'default': dj_database_url.parse('postgres://nlrmuvycucyydj:d58a89fe6fc351c14c72e33183dc8792abda875501075b2336f61e635f0e689a@ec2-54-75-150-32.eu-west-1.compute.amazonaws.com:5432/d654a6bpi3j43s')
-#}
-
-if development:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
+DATABASES = {
+    'default': dj_database_url.parse('postgres://nlrmuvycucyydj:d58a89fe6fc351c14c72e33183dc8792abda875501075b2336f61e635f0e689a@ec2-54-75-150-32.eu-west-1.compute.amazonaws.com:5432/d654a6bpi3j43s')
+}
 
 
 # Password validation
